@@ -26,9 +26,7 @@ done
 echo "Files downloaded!"
 echo "Performing checkup:"
 clang-tidy --version
-clang-tidy *.cpp -checks=boost-*,bugprone-*,performance-*,readability-*,portability-*,modernize-*,clang-analyzer-cplusplus-*,clang-analyzer-*,cppcoreguidelines-* > clang-tidy-report.txt
-
-cppcheck --enable=all --std=c++11 --language=c++ --output-file=cppcheck-report.txt *
+clang-tidy *.cpp -checks=-*,cppcoreguidelines-* > clang-tidy-report.txt
 
 PAYLOAD_CLANG=`cat clang-tidy-report.txt`
 PAYLOAD_CPPCHECK=`cat cppcheck-report.txt`
